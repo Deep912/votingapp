@@ -1,0 +1,111 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cat vs dog</title>
+    <style>
+     
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+      input[type="submit"] {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .results {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .option {
+        margin: 0 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .option h2 {
+        margin-top: 0;
+      }
+      .option .count {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>cat vs dog</h1>
+    <div class="conatiner">
+    <form>
+      <label>
+        <input type="radio" name="vote" value="cat">
+        cat
+      </label>
+      <label>
+        <input type="radio" name="vote" value="dog">
+        dog
+      </label>
+      <input type="submit" value="Submit Vote">
+    </form>
+    <div class="results">
+      <div class="option cat">
+        <h2>Cat</h2>
+        <div class="count">0</div>
+      </div>
+      <div class="option dog">
+        <h2>Dog</h2>
+        <div class="count">0</div>
+      </div>
+    </div> </div>
+    <script>
+      // Get the form element
+      const form = document.querySelector('form');
+
+      // Get the option elements
+      const cat = document.querySelector('.cat');
+      const dog = document.querySelector('.dog');
+
+      // Set the initial vote counts
+      let countA = 0;
+      let countB = 0;
+
+      // Handle form submission
+      form.addEventListener('submit', (event) => {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Get the selected option
+        const selectedOption = form.querySelector('input[name="vote"]:checked');
+
+        // Increment the vote count for the selected option
+        if (selectedOption.value === 'cat') {
+          countA++;
+        } else if (selectedOption.value === 'dog') {
+          countB++;
+        }
+
+        // Update the vote count display
+        cat.querySelector('.count').textContent = countA;
+        dog.querySelector('.count').textContent = countB;
+      });
+    </script>
+  </body>
+</html>
